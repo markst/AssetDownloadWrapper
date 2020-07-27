@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rag-GQ-RUH">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,18 +40,18 @@
                                             <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xIo-He-Lfm"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrG-TL-ubf">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljy-BS-0b0">
                                         <rect key="frame" x="0.0" y="197" width="150" height="30"/>
+                                        <state key="normal" title="cancel download"/>
+                                        <connections>
+                                            <action selector="cancelButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3HC-40-H2l"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrG-TL-ubf">
+                                        <rect key="frame" x="0.0" y="258" width="150" height="30"/>
                                         <state key="normal" title="play And load"/>
                                         <connections>
                                             <action selector="startAndLoadButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bdn-M3-gOh"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUS-ak-faW">
-                                        <rect key="frame" x="0.0" y="258" width="150" height="30"/>
-                                        <state key="normal" title="cancel download"/>
-                                        <connections>
-                                            <action selector="cancelButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JwB-jg-CvA"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVb-Fo-Y5D">
@@ -74,6 +74,7 @@
                     <navigationItem key="navigationItem" id="3mO-3G-B7O"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="cancelButton" destination="ljy-BS-0b0" id="8e6-SL-vIJ"/>
                         <outlet property="progressLabel" destination="Cma-ny-FGG" id="uG3-Dl-krY"/>
                         <outlet property="progressView" destination="8Ra-ee-zTD" id="eWc-CD-9nD"/>
                         <outlet property="startButton" destination="UkC-vp-Efl" id="jIQ-FN-5iW"/>
@@ -81,7 +82,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="91.741071428571431"/>
+            <point key="canvasLocation" x="1732" y="92"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0mk-G5-C8M">
@@ -94,12 +95,41 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="eeY-Xd-mni"/>
+                        <segue destination="gQz-09-WfW" kind="relationship" relationship="rootViewController" id="NSr-V0-IEX"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plS-P2-VXS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="91.741071428571431"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="zuP-Bz-apr">
+            <objects>
+                <viewController id="gQz-09-WfW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZXG-Bj-0Mz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHe-Zl-7Ia">
+                                <rect key="frame" x="177" y="460" width="60" height="30"/>
+                                <state key="normal" title="continue"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="DiC-NJ-WmB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="eHe-Zl-7Ia" firstAttribute="centerX" secondItem="PM9-Vf-KfK" secondAttribute="centerX" id="CgL-sy-e8k"/>
+                            <constraint firstItem="eHe-Zl-7Ia" firstAttribute="centerY" secondItem="PM9-Vf-KfK" secondAttribute="centerY" id="LIV-KF-Goc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PM9-Vf-KfK"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nWk-xr-2o0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gaS-w3-D2P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="925" y="92"/>
         </scene>
     </scenes>
 </document>

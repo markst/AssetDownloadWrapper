@@ -79,12 +79,46 @@ class ViewController: UIViewController {
         vc.player = player
         present(vc, animated: true, completion: nil)
     }
-    
+
+    @IBAction private func cancelButtonTapped(_ sender: Any) {
+        AssetDownloadManager.shared
+            .cancelDownload(
+                for: .init(
+                    urlAsset: .init(url: Self.url),
+                    assetTitle: Self.name
+                )
+        )
+    }
+
+    // MARK: -
     private var player = AVPlayer()
+
+    // MARK: - Outlets
     @IBOutlet private weak var progressLabel: UILabel!
     @IBOutlet private weak var startButton: UIButton!
+    @IBOutlet private weak var cancelButton: UIButton!
     @IBOutlet private weak var progressView: UIProgressView!
+
     private static let name = "bipbop_4x3_variant"
     private static let url = URL(string: "https://mnmedias.api.telequebec.tv/m3u8/29880.m3u8")!
+    
+    // MARK: - View Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        activeDownload()
+    }
+    
+    func activeDownload() {
+        let task = AssetDownloadManager.shared
+            .activeDownload(
+                with: .init(urlAsset: .init(url: Self.url), assetTitle: Self.name),
+                progressHandler: { [weak self] (_, progress) in
+                    self?.progressLabel.text = progress.description
+                    self?.progressView.setProgress(.init(progress), animated: true)
+                },
+                completion: { [weak self] result in
+                    self?.startButton.isEnabled = true
+            })
+        self.startButton.isEnabled = task == nil
+    }
 }
-
